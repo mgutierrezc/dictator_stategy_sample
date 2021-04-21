@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree_tags %}
+
+{% block title %}Tu Decisión{% endblock %}
+
+{% block content %}
+
+{% formfield player.kept %}
+
+{% next_button %}
+
+    {% include Constants.instructions_template %}
+
+{% endblock %}

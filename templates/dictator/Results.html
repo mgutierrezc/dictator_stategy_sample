@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+    
+    {% if player.dictator %}
+    <p>
+        Tu eras el Participante 1. Te quedaste con 
+        <strong>{{ group.group_kept }}</strong> para ti mismo.
+    </p>
+    <p>
+        Como resultado, el participante 2 se quedó con <strong>{{ offer }}</strong>.
+    </p>
+    {% else %}
+    <p>
+        Tu eras el Participante 2. El Participante 1 se quedó con 
+        <strong>{{ group.group_kept }}</strong> para si mismo.
+    </p>
+    <p>
+        Como resultado, te quedaste con <strong>{{ offer }}</strong>.
+    </p>
+    {% endif %}
+
+        {% next_button %}
+    
+    {% include Constants.instructions_template %}
+{% endblock %}
