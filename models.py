@@ -31,6 +31,21 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     def creating_session(self):
         self.group_randomly()
+    
+    def vars_for_admin_report(self):
+        kept_amounts = [
+            p.kept for p in self.get_players() if p.kept != None
+        ]
+        if kept_amounts:
+            return dict(
+                avg_kept_amount=sum(kept_amounts) / len(kept_amounts),
+                range_kept_amount = str([int(min(kept_amounts)), int(max(kept_amounts))]) + " puntos",
+            )
+        else:
+            return dict(
+                avg_kept_amount='(no data)',
+                range_kept_amount='(no data)',
+            )
 
 
 class Group(BaseGroup):
